@@ -1,0 +1,68 @@
+$cW: white;
+$cBl: black;
+$cCB:cadetblue;
+$cCho:#422814;
+$cNy:navy;
+$cGr:gray;
+
+@mixin g-c($color1,$color2) {
+  background: linear-gradient($color1, $color2);
+}
+html{
+  background-color: $cBl;
+}
+body {
+    width: 80%;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: grid;
+    grid-template: 
+    "header header header" 120px
+    "s-bar  main   main  " 1fr
+    "footer footer footer" 80px
+    /150px  auto   auto;
+
+  .header {
+    grid-area: header;
+    text-align: center;
+    @include g-c( indigo, $cGr );
+    .title{
+        font-family: cursive;
+        letter-spacing: 3px;
+        color: $cW;
+        text-shadow: 5px 5px 5px $cNy;
+        opacity: 0.7;
+      }
+      .subtitle {
+        background-color: $cCB;
+        color: beige;
+        padding-bottom: 4px;
+        text-shadow: 2px 0 5px goldenrod;
+      }
+  }
+  .sidebar {
+   grid-area: s-bar;
+   color: $cW;
+   background-color: crimson;
+  }
+  .article {
+   grid-area: main;
+   color: $cW;
+   @include g-c($cNy, purple );
+  }
+  .footer {
+   grid-area: footer;
+   background-color: $cCho;
+  }
+}
+@media screen and (max-width: 900px) {
+    body {
+        width: 100%;
+        grid-template: 
+        "header" 120px
+        "s-bar " 60px
+        "main  " 1fr
+        "footer" 80px;
+
+    }
+}
